@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
-import "./Style.css";
+import "./drawing.css";
 import Header3 from "../../images/Header3.png";
 import API from "../../utils/API.js";
-import Winner from "../Winner.js";
-import Sorry from "../Sorry.js";
-// const schedule = require('node-schedule');
+const schedule = require('node-schedule');
 
 // Brute force method - just refresh the page every 10 seconds
 // setTimeout(
@@ -146,7 +144,7 @@ const Drawing = (props) => {
             </span>
           </figure>
         </section>
-        {didIWin ? <Winner /> : <Sorry />}
+        {/* {didIWin ? <Winner /> : <Sorry />} */}
       </div>
     </div>
   );

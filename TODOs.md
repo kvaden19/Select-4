@@ -1,0 +1,26 @@
+## TODOs:
+- Restyle (2)
+    - Restyle Home
+        - Put some left and right margins on the intro text
+    - Restyle Login
+        - Login and Signup should be side-by-side
+        - Fields are too long
+    - Restyle Keypad
+        - Shorter instructions
+        - Some kind of (less loud) background image
+        - Smaller input field, less angry red color
+        - Bigger keypad buttons; buttons aligned
+- Fix Login Functionality (3)
+    - Hide Keypad and Wallet links if user not logged in
+    - Swap Log In and Log Out in Nav Bar. Add Log Out functionality
+    - Put "Hello, [username]" in Nav Bar
+    - Start button should take user to Keypad if logged in, Log In if not
+- Fix Check Winner Functionality (2)
+    - Check code that checks tix for winners
+    - Re-create (clean) Winner and Sorry Swals; display to user as appropriate
+- Fix Drawing Page (2)
+    - Make countdown clock on Drawing page
+    - Put drawing on a schedule (every minute)
+- Deploy (1)
+    - Edit README
+    - Deploy on Heroku

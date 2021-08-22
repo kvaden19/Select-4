@@ -68,7 +68,3 @@ http://github.com/thereal-baitjet <br>
 *Christine Osmak
 Christineosmak@gmail.com &
 http://github.com/Christineoz <br>
-
-
-
-
