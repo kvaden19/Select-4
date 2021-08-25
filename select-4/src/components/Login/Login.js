@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-// import Header3 from "../images/Header3.png";
 import axios from "axios";
-import "./login.css";
 
-const Login = () => {
+const Authenticate = () => {
   const [NewUsername, setNewUsername] = useState("");
   const [NewPassword, setNewPassword] = useState("");
 
@@ -45,76 +43,40 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <form className="form login-form">
-        <div className="form-group col-md-3 mx-auto">
-          <h2 style={{ color: "white" }}>Login</h2>
-          <label style={{ color: "white" }}>username:</label>
-          <input
-            className="form-control"
-            type="text"
-            placeholder="Username"
-            name="loginUsername"
-            onChange={(e) => {
-              setLoginUsername(e.target.value);
-            }}
-          />
-        </div>
-        <div className="form-group col-md-3 mx-auto">
-          <label style={{ color: "white" }}>password:</label>
-          <input
-            className="form-control"
-            type="password"
-            placeholder="Password"
-            name="loginPassword"
-            onChange={(e) => setLoginPassword(e.target.value)}
-          />
-        </div>
-        <div className="form-group col-md-3 mx-auto">
-          <button className="btn btn-success" onClick={LoginUser} type="submit">
-            login
-          </button>
-        </div>
-      </form>
-
-      <div className="col-md-3 mx-auto">
-        <h2 style={{ color: "white" }}>Signup</h2>
-        <form className="form signup-form">
-          <div className="form-group">
-            <label style={{ color: "white" }}>username:</label>
-            <input
-              className="form-control"
-              type="text"
-              placeholder="Username"
-              name="newUsername"
-              onChange={(e) => setNewUsername(e.target.value)}
+    <div className='container'>
+      <div className='row justify-content-around'>
+        <div className="col-md-4 my-5">
+          <form className="form login-form">
+            <h2 className="text-light">Login</h2>
+            <label className="text-light">username:</label>
+            <input className="form-control" type="text" placeholder="Username" name="loginUsername"
+              onChange={(e) => {setLoginUsername(e.target.value);}}
             />
-          </div>
-          <div className="form-group">
-            <label style={{ color: "white" }}>password:</label>
-            <input
-              className="form-control"
-              type="password"
-              placeholder="Password"
-              name="newPassword"
+            <label className="text-light">password:</label>
+            <input className="form-control" type="password" placeholder="Password" name="loginPassword"
+              onChange={(e) => setLoginPassword(e.target.value)}
+            />
+            <button className="btn btn-success mt-3" onClick={LoginUser} type="submit">login</button>
+          </form>
+        </div>
+
+        <div className="col-md-4 my-5">
+          <form className="form signup-form">
+            <h2 className="text-light">Signup</h2>
+            <label className="text-light">username:</label>
+            <input className="form-control" type="text" placeholder="Username" name="newUsername"
+                onChange={(e) => setNewUsername(e.target.value)}
+            />
+            <label className="text-light">password:</label>
+            <input className="form-control" type="password" placeholder="Password" name="newPassword"
               onChange={(e) => setNewPassword(e.target.value)}
             />
-          </div>
-          <div className="form-group">
-            <button
-              className="btn btn-primary"
-              onClick={(e) => {
-                Signup(e);
-              }}
-              type="submit"
-            >
-              signup
-            </button>
-          </div>
-        </form>
+            <button className="btn btn-primary mt-3" onClick={(e) => {Signup(e);}} type="submit">signup</button>
+          </form>
+        </div>
       </div>
     </div>
   );
 };
 
-export default Login;
+export default Authenticate;

@@ -60,9 +60,7 @@ class Wallet extends Component {
             >
               <Card
                 style={{
-                  boxShadow: "10px 30px 10px #9E9E9E",
-                  backgroundImage:
-                    "url(https://i.ibb.co/mc5Vs1B/ticketbackground.jpg)",
+                  boxShadow: "10px 30px 10px #9E9E9E"
                 }}
               >
                 <Card.Body>

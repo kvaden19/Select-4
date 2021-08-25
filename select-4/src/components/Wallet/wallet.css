@@ -1,8 +1,7 @@
 .bkGround {
-    background-image: url('./Walletbackground.jpg');
+  background-image: url('./Walletbackground.jpg');
 	background-repeat: no-repeat;
-    background-position: center;
-    /* Set rules to fill background */
+  background-position: center;
   min-height: 100%;
   min-width: 1024px;
 	
