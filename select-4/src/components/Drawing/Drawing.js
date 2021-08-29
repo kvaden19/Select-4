@@ -112,9 +112,9 @@ const Drawing = (props) => {
         style={{ maxWidth: "50%", height: "auto" }}
         alt="Logo"
       />
-      <h1 style={{ marginTop: "0px", color: "white" }}>
+      {/* <h1 style={{ marginTop: "0px", color: "white" }}>
         Here goes the DAILY DRAWING...
-      </h1>
+      </h1> */}
       <div className="wrap">
         <section className="stage">
           <figure className="ball">

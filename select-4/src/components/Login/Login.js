@@ -43,7 +43,7 @@ const Authenticate = () => {
   };
 
   return (
-    <div className='container'>
+    <div className='container' style={{ height: "100vh" }}>
       <div className='row justify-content-around'>
         <div className="col-md-4 my-5">
           <form className="form login-form">

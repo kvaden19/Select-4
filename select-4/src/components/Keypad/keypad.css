@@ -1,13 +1,6 @@
-/* .backGround {
-  background-image: url("./Keypadbackground.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 1450px 1500px;
-} */
-
 .btn {
-  height: auto;
-  width: auto;
+  height: 75px;
+  width: 75px;
   background: linear-gradient(
     #f00202 0%,
     #bd0404 10%,

@@ -3,11 +3,11 @@ import Header3 from "../../images/Header3.png";
 
 const Home = () => {
   return (
-    <div>
-      <img src={Header3} style={{ maxWidth: "100%", height: "auto" }} alt="Logo" />
+    <div style={{ height: "100vh" }}>
+      <img src={Header3} style={{ maxWidth: "50%", height: "auto" }} alt="Logo" />
       <br></br>
-      <a href="#keypad" className="btn btn-warning btn-lg btn-block text-light" role="button" aria-pressed="true">
-        Start Game
+      <a href="#keypad" style={{ height: "40px" }} className="btn btn-warning text-light" role="button" aria-pressed="true">
+        Start
       </a>
       <div id="explainer" className="mx-5 text-light">
         <p className="mt-5">Why play Select-4?</p>

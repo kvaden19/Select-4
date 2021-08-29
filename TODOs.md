@@ -1,11 +1,6 @@
 ## TODOs:
 - Restyle (1)
-    - Restyle Keypad
-        - Shorter instructions
-        - Smaller input field, less angry red color
-        - Bigger keypad buttons; buttons aligned
-    - All
-        - Make gradient background extend to bottom of screen
+    - Make gradient background extend to bottom of screen
 - Fix Login Functionality (3)
     - Hide Keypad and Wallet links if user not logged in
     - Swap Log In and Log Out in Nav Bar. Add Log Out functionality

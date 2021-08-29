@@ -50,151 +50,36 @@ const Keypad = (props) => {
   };
 
   return (
-    <div className="backGround">
-      <h1 style={{ color: "dark gray", fontSize: "30px" }}>
-        Choose your 4 numbers
-      </h1>
-      <div className="container py-4">
-        <div
-          className="body"
-          style={{
-            // backgroundImage: 'url("Keypadbackground.jpg")', // Took this out for debugging -kv
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "center",
-            backgroundSize: "1500px 1500px",
-          }}
-        >
-          <div
-            className="container py-4"
-            style={{ color: "red", fontSize: "100px" }}
-          >
-            <h1>
-              Input four numbers per line, max 3 lines per game for each
-              drawing, refer to wallet page for your selected ticket
-            </h1>
-            {/* Here is where typed numbers appear and get sent to database */}
-            <form
-              onSubmit={handleSubmit}
-              style={{
-                height: "25px",
-              }}
-            >
-              <input
-                style={{
-                  backgroundColor: "#54626F",
-                  borderWidth: "5px",
-                  borderStyle: "double",
-                  borderColor: "red",
-                  width: "288px",
-                  textAlign: "center",
-                }}
-                type="text"
-                name="ticket"
-                onChange={handleChange}
-                value={clickedNumber}
-              />
-            </form>
-            <br></br>
-            <div className="row">
-              <div className="col-auto mx-auto bg-white rounded shadow">
-                <div
-                  className="btn-group-vertical mx-4 my-5"
-                  role="group"
-                  aria-label="Basic example"
-                >
-                  <div className="btn-group btn-group-lg">
-                    <button
-                      type="button"
-                      onClick={clickButton}
-                      className="btn btn-outline-secondary border-bottom-0 rounded-0"
-                    >
-                      1
-                    </button>
-                    <button
-                      type="button"
-                      onClick={clickButton}
-                      className="btn btn-outline-secondary border-bottom-0"
-                    >
-                      2
-                    </button>
-                    <button
-                      type="button"
-                      onClick={clickButton}
-                      className="btn btn-outline-secondary border-bottom-0 rounded-0"
-                    >
-                      3
-                    </button>
-                  </div>
-                  <div className="btn-group btn-group-lg">
-                    <button
-                      type="button"
-                      onClick={clickButton}
-                      className="btn btn-outline-secondary border-bottom-0 rounded-0"
-                    >
-                      4
-                    </button>
-                    <button
-                      type="button"
-                      onClick={clickButton}
-                      className="btn btn-outline-secondary border-bottom-0"
-                    >
-                      5
-                    </button>
-                    <button
-                      type="button"
-                      onClick={clickButton}
-                      className="btn btn-outline-secondary border-bottom-0 rounded-0"
-                    >
-                      6
-                    </button>
-                  </div>
-                  <div className="btn-group btn-group-lg">
-                    <button
-                      type="button"
-                      onClick={clickButton}
-                      className="btn btn-outline-secondary rounded-0"
-                    >
-                      7
-                    </button>
-                    <button
-                      type="button"
-                      onClick={clickButton}
-                      className="btn btn-outline-secondary"
-                    >
-                      8
-                    </button>
-                    <button
-                      type="button"
-                      onClick={clickButton}
-                      className="btn btn-outline-secondary rounded-0"
-                    >
-                      9
-                    </button>
-                  </div>
-                  <div className="btn-group btn-group-lg">
-                    <button
-                      type="button"
-                      onClick={clear}
-                      className="btn btn-outline-secondary"
-                    >
-                      X
-                    </button>
-                    <button
-                      type="button"
-                      onClick={clickButton}
-                      className="btn btn-outline-secondary"
-                    >
-                      0
-                    </button>
-                    <button
-                      type="button"
-                      onClick={handleSubmit}
-                      className="btn btn-outline-secondary"
-                    >
-                      {">>"}
-                    </button>
-                  </div>
-                </div>
+    <div className="backGround" style={{ height: "100vh" }}>
+      <div className="container py-4" style={{ color: "red", fontSize: "100px" }}>
+        <h1 className="text-light">Choose your 4-digit ticket</h1>
+        <form onSubmit={handleSubmit}>
+          <input style={{backgroundColor: "#b2bec3", borderWidth: "5px", borderStyle: "double", borderColor: "white",
+            width: "288px", height: "100px", textAlign: "center"}} type="text" name="ticket" onChange={handleChange} value={clickedNumber}
+          />
+        </form>
+        <div className="row">
+          <div className="col-auto mx-auto bg-white rounded shadow">
+            <div className="btn-group-vertical mx-2 my-3" role="group">
+              <div className="btn-group btn-group-lg">
+                <button type="button" onClick={clickButton} className="btn btn-outline-secondary border-bottom-0 rounded-0">1</button>
+                <button type="button" onClick={clickButton} className="btn btn-outline-secondary border-bottom-0">2</button>
+                <button type="button" onClick={clickButton} className="btn btn-outline-secondary border-bottom-0 rounded-0">3</button>
+              </div>
+              <div className="btn-group btn-group-lg">
+                <button type="button" onClick={clickButton} className="btn btn-outline-secondary border-bottom-0 rounded-0">4</button>
+                <button type="button" onClick={clickButton} className="btn btn-outline-secondary border-bottom-0">5</button>
+                <button type="button" onClick={clickButton} className="btn btn-outline-secondary border-bottom-0 rounded-0">6</button>
+              </div>
+              <div className="btn-group btn-group-lg">
+                <button type="button" onClick={clickButton} className="btn btn-outline-secondary rounded-0">7</button>
+                <button type="button" onClick={clickButton} className="btn btn-outline-secondary">8</button>
+                <button type="button" onClick={clickButton} className="btn btn-outline-secondary rounded-0">9</button>
+              </div>
+              <div className="btn-group btn-group-lg">
+                <button type="button" onClick={clear} className="btn btn-outline-secondary">X</button>
+                <button type="button" onClick={clickButton} className="btn btn-outline-secondary">0</button>
+                <button type="button" onClick={handleSubmit} className="btn btn-outline-secondary">{">"}</button>
               </div>
             </div>
           </div>
