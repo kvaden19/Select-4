@@ -16,7 +16,7 @@ class Wallet extends Component {
   componentDidMount() {
     API.getSession()
     .then((res) => this.setState({ loggedInUser: res.data.user_id }))
-    .then((res) => console.log('On Wallet page as ', this.state.loggedInUser))
+    //.then((res) => console.log('On Wallet page as ', this.state.loggedInUser))
     .then((res) => API.getUserTickets(this.state.loggedInUser))
     // .then((res) => console.log(res))
     .then((res) => {

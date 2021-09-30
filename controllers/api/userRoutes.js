@@ -6,8 +6,8 @@ const { User } = require('../../models');
 router.post('/', async (req, res) => {
   try {
     const userData = await User.create({
-      username: req.body.NewUsername,
-      password: req.body.NewPassword
+      username: req.body.usrnm,
+      password: req.body.pswd
     });
     req.session.save(() => {
       req.session.user_id = userData.id;
@@ -24,14 +24,14 @@ router.post('/', async (req, res) => {
 // Route: POST /api/user/login
 router.post('/login', async (req, res) => {
  try {
-    const userData = await User.findOne({ where: { username: req.body.LoginUsername } });
+    const userData = await User.findOne({ where: { username: req.body.usrnm } });
     if (!userData) {
       res
         .status(400)
         .json({ message: 'Incorrect email or password, please try again' });
       return;
     }
-    const validPassword = await userData.checkPassword(req.body.LoginPassword);
+    const validPassword = await userData.checkPassword(req.body.pswd);
     if (!validPassword) {
       res
         .status(400)
@@ -51,20 +51,17 @@ router.post('/login', async (req, res) => {
 
 // Get user status
 // Route: GET /api/user/userStatus
-router.get("/userStatus",(req, res) => {
+router.get("/userStatus", (req, res) => {
   res.status(200).json(req.session);
 })
 
 // Logout user
 // Route: POST /api/user/logout
 router.post('/logout', (req, res) => {
-  if (req.session.logged_in) {
-    req.session.destroy(() => {
-      res.status(204).end();
-    });
-  } else {
-    res.status(404).end();
-  }
+  console.log('Axios logout route');
+  req.session.destroy(() => {
+    res.status(200).end();
+  });
 });
 
 module.exports = router;

@@ -1,11 +1,4 @@
 ## TODOs:
-- Restyle (1)
-    - Make gradient background extend to bottom of screen
-- Fix Login Functionality (3)
-    - Hide Keypad and Wallet links if user not logged in
-    - Swap Log In and Log Out in Nav Bar. Add Log Out functionality
-    - Put "Hello, [username]" in Nav Bar
-    - Start button should take user to Keypad if logged in, Log In if not
 - Fix Check Winner Functionality (2)
     - Check code that checks tix for winners
     - Re-create (clean) Winner and Sorry Swals; display to user as appropriate
@@ -15,3 +8,7 @@
 - Deploy (1)
     - Edit README
     - Deploy on Heroku
+
+kvaden19
+12345678
+id: 5

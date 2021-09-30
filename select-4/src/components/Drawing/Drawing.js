@@ -30,7 +30,7 @@ const Drawing = (props) => {
   useEffect(() => {
     API.getSession()
     .then((res) => setLoggedInUser(res.data.user_id))
-    .then((res) => console.log('On Drawing page, logged in as user_id: ', loggedInUser))
+    //.then((res) => console.log('On Drawing page, logged in as user_id: ', loggedInUser))
     .catch((err) => console.log(err));
   });
 
@@ -55,55 +55,54 @@ const Drawing = (props) => {
     return winningString;
   }
 
-  useEffect(() => {
-    API.getAllTickets()
-      .then(async (res) => {
-        await setNumbers(res);
-        let winningTicket = drawWinner();
-        console.log(typeof winningTicket);
-        await setDisplayTicket(winningTicket.split(""));
-        winOrLose(res, winningTicket);
-      })
-      //.then(res => console.log(res.data[0].number))
-      .catch((err) => console.log(err));
-  }, []);
+  // useEffect(() => {
+  //   API.getAllTickets()
+  //     .then(async (res) => {
+  //       await setNumbers(res);
+  //       let winningTicket = drawWinner();
+  //       await setDisplayTicket(winningTicket.split(""));
+  //       winOrLose(res, winningTicket);
+  //     })
+  //     //.then(res => console.log(res.data[0].number))
+  //     .catch((err) => console.log(err));
+  // }, []);
 
-  const winOrLose = async (numbers, winningTicket) => {
-    if (numbers) {
-      let winner = numbers.data.find((number) => {
-        return number.number === winningTicket;
-      });
+  // const winOrLose = async (numbers, winningTicket) => {
+  //   if (numbers) {
+  //     let winner = numbers.data.find((number) => {
+  //       return number.number === winningTicket;
+  //     });
 
-      console.log(winner);
-      if (winner) {
-        console.log("winner");
-        await setDidIWin(true);
-      } else {
-        console.log("loser");
-        await setDidIWin(false);
-      }
-      // for (let index = 0; index < numbers.data.length; index++) {
-      //   const numPick = numbers.data[index].number;
-      //   console.log(numPick, winningTicket);
-      //   if (winningTicket === numPick) {
-      //     console.log("winner");
-      //   } else {
-      //     console.log("loser");
-      //   }
-      // }
-    } else {
-      console.log("sorry");
-    }
-  };
-  // let
-
-  //    if (didIWin) {
-  //     return (<Winner />);
-  //   } else if (isWinner === 2) {
-  //     return (<Sorry />);
+  //     // console.log(winner);
+  //     // if (winner) {
+  //     //   console.log("winner");
+  //     //   await setDidIWin(true);
+  //     // } else {
+  //     //   console.log("loser");
+  //     //   await setDidIWin(false);
+  //     }
+  //     // for (let index = 0; index < numbers.data.length; index++) {
+  //     //   const numPick = numbers.data[index].number;
+  //     //   console.log(numPick, winningTicket);
+  //     //   if (winningTicket === numPick) {
+  //     //     console.log("winner");
+  //     //   } else {
+  //     //     console.log("loser");
+  //     //   }
+  //     // }
   //   } else {
-  //     console.log("neither");
+  //     console.log("sorry");
   //   }
+  // };
+  // // let
+
+  // //    if (didIWin) {
+  // //     return (<Winner />);
+  // //   } else if (isWinner === 2) {
+  // //     return (<Sorry />);
+  // //   } else {
+  // //     console.log("neither");
+  // //   }
 
   return (
     <div>

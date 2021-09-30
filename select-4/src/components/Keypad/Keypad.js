@@ -8,7 +8,7 @@ const Keypad = (props) => {
 
   // Get user session
   useEffect(() => {
-    console.log('In useEffect. Logged in as: ', loggedInUser);
+    // console.log('In useEffect. Logged in as: ', loggedInUser);
     API.getSession()
     .then((res) => setLoggedInUser(res.data.user_id))
     .catch((err) => console.log(err));
@@ -34,9 +34,9 @@ const Keypad = (props) => {
     e.preventDefault();
     // use POST route to send the ticket to the database using logged in user and today's date
     // Only call API route if ticket is exactly 4 digits
-    console.log('Ticket bought: ', clickedNumber);
+    //console.log('Ticket bought: ', clickedNumber);
     if (clickedNumber.length === 4) {
-      console.log('Calling the POST route!');
+      //console.log('Calling the POST route!');
       API.createTicket({
         number: clickedNumber,
         date: new Date().toDateString(),
@@ -46,7 +46,7 @@ const Keypad = (props) => {
     }
   };
   const handleChange = (e) => {
-    console.log(e.target.value);
+    //console.log(e.target.value);
   };
 
   return (
