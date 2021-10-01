@@ -133,3 +133,12 @@
 .stage:nth-child(4) .number:before {
   animation-delay: 2.4s;
 }
+
+.timer {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.counter {
+  color: white;
+  font-size: 72px;
+}

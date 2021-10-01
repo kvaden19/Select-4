@@ -4,57 +4,102 @@ import Header3 from "../../images/Header3.png";
 import API from "../../utils/API.js";
 const schedule = require('node-schedule');
 
-// Brute force method - just refresh the page every 10 seconds
-// setTimeout(
-//   function() { window.location.reload() },
-//   10000
-// );
-
-// Node-schedule method - works but doesn't re-render the component
-// const test = schedule.scheduleJob('*/10 * * * * *', function() {
-//     // Draw winning number
-//     winningTicket = drawWinner();
-//     console.log(winningTicket);
-//     // Parse the winning number so the component animation can display it
-//     displayWinningTicket = winningTicket.split('');
-// });
-
 const Drawing = (props) => {
 
-  const [numbers, setNumbers] = useState([]);
-  const [displayTicket, setDisplayTicket] = useState("");
-  const [didIWin, setDidIWin] = useState(false);
-  const [loggedInUser, setLoggedInUser] = useState('');
+  // COUNTDOWN FUNCTIONALITY
+  // Calculate time left
+  const calculateTimeLeft = () => {
+    let drawTime = new Date().setSeconds(30);
+    const difference = +drawTime - +new Date(); // in milliseconds
 
-  // Get user session
-  useEffect(() => {
-    API.getSession()
-    .then((res) => setLoggedInUser(res.data.user_id))
-    //.then((res) => console.log('On Drawing page, logged in as user_id: ', loggedInUser))
-    .catch((err) => console.log(err));
-  });
+    let timeLeft = {};
 
-  // Randomly draw the winning number
-  function drawWinner() {
-    let winningString;
-    let winningNumber = Math.floor(Math.random() * 10000);
-
-    // Make sure any leading zeros show up in the winning number
-    if (winningNumber === 0) {
-      winningString = "0000";
-    } else if (winningNumber < 10) {
-      winningString = "000" + String(winningNumber);
-    } else if (winningNumber < 100) {
-      winningString = "00" + String(winningNumber);
-    } else if (winningNumber < 1000) {
-      winningString = "0" + String(winningNumber);
-    } else {
-      winningString = String(winningNumber);
+    if (difference > 0) {
+      timeLeft = {
+        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((difference / 1000 / 60) % 60),
+        seconds: Math.floor((difference / 1000) % 60)
+      };
     }
 
-    return winningString;
-  }
+    return timeLeft;
+  };
 
+  // State hook for time left
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+  
+  // Set up timer components for display
+  const timerComponents = [];
+  Object.keys(timeLeft).forEach((interval) => {
+    if (!timeLeft[interval]) {
+      return;
+    }
+
+    // "Prod" mode - 
+    // timerComponents.push(<span>{timeLeft[interval]} {interval}{" "}</span>);
+
+    // Demo mode - every 30 seconds, no labelled intervals needed
+    timerComponents.push(<span>{timeLeft[interval]}</span>);
+  });
+
+  // Effect hook for updating counter every second
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setTimeLeft(calculateTimeLeft());
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  });
+
+  // DRAWING FUNCTIONALITY
+  // const [numbers, setNumbers] = useState([]);
+  const [displayTicket, setDisplayTicket] = useState("");
+  // const [didIWin, setDidIWin] = useState(false);
+  // const [loggedInUser, setLoggedInUser] = useState('');
+  
+  // Winning Number Draw
+  // function drawWinner() {
+  //   let string;
+  //   let winningNumber = Math.floor(Math.random() * 10000);
+
+  //   // Make sure any leading zeros show up in the winning number
+  //   if (winningNumber === 0) {
+  //     string = "0000";
+  //   } else if (winningNumber < 10) {
+  //     string = "000" + String(winningNumber);
+  //   } else if (winningNumber < 100) {
+  //     string = "00" + String(winningNumber);
+  //   } else if (winningNumber < 1000) {
+  //     string = "0" + String(winningNumber);
+  //   } else {
+  //     string = String(winningNumber);
+  //   }
+
+  //   let winningString = string;
+  //   return winningString;
+  // }
+
+  // CHECK WINNER FUNCTIONALITY
+  // Get User Session
+  // useEffect(() => {
+  //   API.getSession()
+  //   .then((res) => setLoggedInUser(res.data.user_id))
+  //   //.then((res) => console.log('On Drawing page, logged in as user_id: ', loggedInUser))
+  //   .catch((err) => console.log(err));
+  // });
+
+  // Node-schedule method; currently running 6X per schedule
+  // const test = schedule.scheduleJob('*/10 * * * * *', function() {
+  //   // Draw winning number
+  //   let timestamp = Date.now();
+  //   let winningTicket = drawWinner();
+  //   console.log('Winning Ticket for: ', timestamp, ' , ', winningTicket);
+  //   // Parse the winning number so the component animation can display it
+  //   // setDisplayTicket(winningTicket.split(''));
+  // });
+
+  // Mancini's code to check for winners and display Swal
   // useEffect(() => {
   //   API.getAllTickets()
   //     .then(async (res) => {
@@ -80,7 +125,7 @@ const Drawing = (props) => {
   //     // } else {
   //     //   console.log("loser");
   //     //   await setDidIWin(false);
-  //     }
+  //     // }
   //     // for (let index = 0; index < numbers.data.length; index++) {
   //     //   const numPick = numbers.data[index].number;
   //     //   console.log(numPick, winningTicket);
@@ -94,26 +139,23 @@ const Drawing = (props) => {
   //     console.log("sorry");
   //   }
   // };
-  // // let
 
-  // //    if (didIWin) {
-  // //     return (<Winner />);
-  // //   } else if (isWinner === 2) {
-  // //     return (<Sorry />);
-  // //   } else {
-  // //     console.log("neither");
-  // //   }
+  //    if (didIWin) {
+  //     return (<Winner />);
+  //   } else if (isWinner === 2) {
+  //     return (<Sorry />);
+  //   } else {
+  //     console.log("neither");
+  //   }
 
+  // RENDER
   return (
     <div>
-      <img
-        src={Header3}
-        style={{ maxWidth: "50%", height: "auto" }}
-        alt="Logo"
-      />
-      {/* <h1 style={{ marginTop: "0px", color: "white" }}>
-        Here goes the DAILY DRAWING...
-      </h1> */}
+      <img src={Header3} style={{ maxWidth: "50%", height: "auto" }} alt="Logo" />
+      <div className='timer'>
+        <h1 style={{ marginTop: "0px", color: "white" }}>Time until the next drawing:</h1>
+        <div className='counter'>{timerComponents.length ? timerComponents : <span>Time's up!</span>}</div>
+      </div>
       <div className="wrap">
         <section className="stage">
           <figure className="ball">
